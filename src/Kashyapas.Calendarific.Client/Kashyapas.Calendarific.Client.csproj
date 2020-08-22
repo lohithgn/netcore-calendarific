@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Authors>Lohith GN</Authors>
+    <Company>Kashyapas Inc.</Company>
+    <Description>.NET Core Client for Calendarific API
+
+Day Off icon - icon by Icons8</Description>
+    <Copyright>Kashyapas Inc.</Copyright>
+    <RepositoryUrl>https://github.com/lohithgn/netcore-calendarific</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>calendarific calendar holiday public local bank observance</PackageTags>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/lohithgn/netcore-calendarific</PackageProjectUrl>
+    <PackageReleaseNotes>V0.0.1 Release
+Supports Countries &amp; Holidays</PackageReleaseNotes>
+    <Version>0.0.1</Version>
+    <PackageIcon>icons8-day-off-80.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="5.1.67" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\icons8-day-off-80.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
