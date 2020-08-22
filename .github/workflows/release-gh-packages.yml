@@ -33,13 +33,13 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Kashyapas.Calendarific.Client
-          path: ./src/Kashyapas.Calendarific.Client/bin/Release/Kashyapas.Calendarific.Client.*.nupkg
+          path: src/Kashyapas.Calendarific.Client/bin/Release/Kashyapas.Calendarific.Client.*.nupkg
       
       - name: Archive NuGet Symbols Package
         uses: actions/upload-artifact@v1
         with:
           name: Kashyapas.Calendarific.Client.Symbols
-          path: ./src/Kashyapas.Calendarific.Client/bin/Release/Kashyapas.Calendarific.Client.*.snupkg
+          path: src/Kashyapas.Calendarific.Client/bin/Release/Kashyapas.Calendarific.Client.*.snupkg
       
       - name: Publish Nuget to Github Packages
         run: dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/lohithgn/index.json
