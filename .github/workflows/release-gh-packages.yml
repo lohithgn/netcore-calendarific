@@ -1,6 +1,7 @@
 name: Release to GH Packages
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Continuous Integration"]
     branches: [master]
