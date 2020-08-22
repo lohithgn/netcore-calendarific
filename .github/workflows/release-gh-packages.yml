@@ -27,7 +27,7 @@ jobs:
       
       - name: Create NuGet Package
         working-directory: ./src/Kashyapas.Calendarific.Client
-        run: dotnet pack -c Release --version-suffix=${{ steps.slug.outputs.sha8 }} | cut -c1-8)
+        run: dotnet pack -c Release --version-suffix=${{ steps.slug.outputs.sha8 }}
       
       - name: Archive NuGet Package
         uses: actions/upload-artifact@v1
