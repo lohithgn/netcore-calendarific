@@ -10,23 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - uses: actions/checkout@v2
+    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.x
+    
     - name: Create NuGet Package
-      run: dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/lohithgn/netcore-calendarific/releases/tag/${{ github.event.release.tag_name }}"
-      working-directory: ./src/Kashyapas.Calendarific.Client
+      run: dotnet pack -c Release -o ./packages /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/lohithgn/netcore-calendarific/releases/tag/${{ github.event.release.tag_name }}" ./src/Kashyapas.Calendarific.Client/Kashyapas.Calendarific.Client.csproj
+    
     - name: Archive NuGet Package
       uses: actions/upload-artifact@v1
       with:
         name: Kashyapas.Calendarific.Client
-        path: ./src/Kashyapas.Calendarific.Client/bin/Release/Kashyapas.Calendarific.Client.${{ github.event.release.tag_name }}.nupkg
+        path: ./packages/*.nupkg
+    
     - name: Archive NuGet Symbols Package
       uses: actions/upload-artifact@v1
       with:
         name: Kashyapas.Calendarific.Client.Symbols
-        path: ./src/Kashyapas.Calendarific.Client/bin/Release/Kashyapas.Calendarific.Client.${{ github.event.release.tag_name }}.snupkg
+        path: ./packages/*.snupkg
+
     - name: Publish Nuget Package
-      run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.nuget_api_key }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push .packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

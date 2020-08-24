@@ -1,4 +1,4 @@
-name: Release to GH Packages
+name: Release Preview Package
 
 on:
   workflow_dispatch:
@@ -30,4 +30,4 @@ jobs:
         run: dotnet pack -c Release -o ./packages --version-suffix=${{ steps.slug.outputs.sha8 }} ./src/Kashyapas.Calendarific.Client/Kashyapas.Calendarific.Client.csproj
       
       - name: Publish Nuget to Github Packages
-        run: dotnet nuget push ./packages/*.nupkg -k ${{ secrets.GH_TOKEN }} --source https://nuget.pkg.github.com/lohithgn/index.json
+        run: dotnet nuget push ./packages/*.nupkg -k ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
