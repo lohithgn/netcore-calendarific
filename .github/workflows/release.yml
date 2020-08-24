@@ -21,18 +21,6 @@ jobs:
     
     - name: Create NuGet Package
       run: dotnet pack -c Release -o ./packages /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/lohithgn/netcore-calendarific/releases/tag/${{ github.event.release.tag_name }}" ./src/Kashyapas.Calendarific.Client/Kashyapas.Calendarific.Client.csproj
-    
-    - name: Archive NuGet Package
-      uses: actions/upload-artifact@v1
-      with:
-        name: Kashyapas.Calendarific.Client
-        path: ./packages/*.nupkg
-    
-    - name: Archive NuGet Symbols Package
-      uses: actions/upload-artifact@v1
-      with:
-        name: Kashyapas.Calendarific.Client.Symbols
-        path: ./packages/*.snupkg
 
     - name: Publish Nuget Package
       run: dotnet nuget push .packages/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
