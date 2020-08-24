@@ -22,8 +22,11 @@ jobs:
         with:
           dotnet-version: 3.1.x
       
+      - name: Set version suffix
+        run: echo "::set-env name=VERSION_SUFFIX::preview.$GITHUB_RUN_NUMBER"
+
       - name: Create NuGet Package
-        run: dotnet pack -c Release -o ./packages --version-suffix=${{ format('preview.{0}',${{ env.GITHUB_RUN_NUMBER }}) }} ./src/Kashyapas.Calendarific.Client/Kashyapas.Calendarific.Client.csproj
+        run: dotnet pack -c Release -o ./packages --version-suffix=$VERSION_SUFFIX ./src/Kashyapas.Calendarific.Client/Kashyapas.Calendarific.Client.csproj
       
       - name: Publish Nuget to Github Packages
         run: dotnet nuget push ./packages/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
