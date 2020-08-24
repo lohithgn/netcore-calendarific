@@ -34,4 +34,4 @@ jobs:
         path: ./packages/*.snupkg
 
     - name: Publish Nuget Package
-      run: dotnet nuget push .packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push .packages/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
