@@ -1,6 +1,7 @@
 name: Release to Nuget
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -16,7 +17,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.x
+        dotnet-version: 3.1.x
     
     - name: Create NuGet Package
       run: dotnet pack -c Release -o ./packages /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/lohithgn/netcore-calendarific/releases/tag/${{ github.event.release.tag_name }}" ./src/Kashyapas.Calendarific.Client/Kashyapas.Calendarific.Client.csproj
