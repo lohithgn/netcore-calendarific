@@ -23,9 +23,16 @@ namespace Kashyapas.Calendarific.Client.Internal
                 },
                 Date = new DateTime(year,month,day),
                 Type = source.type,
-                Locations = source.locations,
-                States = source.states,
+                Locations = source.locations
             };
+
+            // 2022-10-25 Oleg Rumiancev: checking is states are string as some returned entries
+            // from Calendarific API return JSON object array instead of string (try country CA - Canada)
+            // non-string state values are ignored
+            if (source.states is string)
+            {
+                destination.States = source.states as string;
+            }
             return destination;
         }
     }
