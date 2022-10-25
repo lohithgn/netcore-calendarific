@@ -10,6 +10,9 @@ namespace Kashyapas.Calendarific.Client.Models
         public DateTime Date { get; set; }
         public string[] Type { get; set; }
         public string Locations { get; set; }
-        public string States { get; set; }
+
+        // 2022-10-25 Oleg Rumiancev: changing from string to object as some returned entries
+        // from Calendarific API return JSON object array instead of string (try country CA - Canada)
+        public object States { get; set; }
     }
 }
